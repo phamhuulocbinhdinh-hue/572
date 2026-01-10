@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 6 - Tăng gia, quản lý vũ khí và an toàn</title>
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family: Arial, sans-serif; padding:20px; background:#f0f8ff; color:#000;}
+header {background: rgba(255,255,255,0.85); padding:20px; text-align:center; border-radius:0 0 20px 20px; backdrop-filter: blur(5px);}
+header h1 {color:#FF1493; font-size:1.8rem;}
+section {max-width:900px; margin:30px auto;}
+button.back {background:#1e3c72; color:#fff; border:none; border-radius:10px; padding:10px 15px; cursor:pointer; margin-bottom:20px;}
+button.back:hover {background:#2a5298; transform:translateY(-2px);}
+.accordion-item {background: rgba(255,255,255,0.75); margin-bottom:10px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1);}
+.accordion-header {padding:15px 20px; cursor:pointer; font-weight:bold; color:#FF1493; display:flex; justify-content:space-between; align-items:center;}
+.accordion-header:hover {background: rgba(255,20,147,0.1);}
+.accordion-content {display:none; padding:10px 20px 15px 20px; line-height:1.6;}
+.accordion-content ul {margin-left:20px;}
+.accordion-content li {margin-bottom:6px;}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Bài 6: Tăng gia sản xuất, quản lý vũ khí, trang bị kỹ thuật và an toàn</h1>
+</header>
+
+<section>
+<a href="gdct-csm.html"><button class="back">⏪ Quay lại</button></a>
+
+<div class="accordion-item">
+  <div class="accordion-header" onclick="toggleContent(this)">I. Tăng gia sản xuất và thực hành tiết kiệm 🌾</div>
+  <div class="accordion-content">
+    <ul>
+      <li>Tăng gia sản xuất nhằm nâng cao đời sống vật chất, tinh thần cho quân nhân và phục vụ hậu cần trong đơn vị.</li>
+      <li>Phân công hợp lý, khai thác hiệu quả đất, cây, vật nuôi, đảm bảo năng suất và chất lượng sản phẩm.</li>
+      <li>Thực hành tiết kiệm trong sử dụng điện, nước, vật tư, thực phẩm, bảo đảm giảm lãng phí, sử dụng hiệu quả nguồn lực.</li>
+      <li>Khuyến khích các sáng kiến, cải tiến kỹ thuật để tăng năng suất và tiết kiệm thời gian, nhân lực trong tăng gia sản xuất.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="accordion-item">
+  <div class="accordion-header" onclick="toggleContent(this)">II. Quản lý, khai thác vũ khí và trang bị kỹ thuật 🛡️</div>
+  <div class="accordion-content">
+    <ul>
+      <li>Mỗi quân nhân phải nắm rõ cấu tạo, công dụng, phương pháp bảo quản và sử dụng vũ khí, trang bị kỹ thuật.</li>
+      <li>Thường xuyên kiểm tra, bảo dưỡng, sửa chữa định kỳ để đảm bảo vũ khí, trang bị hoạt động tốt, bền và an toàn.</li>
+      <li>Ghi chép đầy đủ việc sử dụng, bảo quản, xuất nhập vũ khí, đạn dược, trang bị kỹ thuật theo quy định.</li>
+      <li>Tuân thủ nghiêm ngặt các quy định về an toàn, phòng ngừa tai nạn, đảm bảo hiệu quả và tuổi thọ của trang bị kỹ thuật.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="accordion-item">
+  <div class="accordion-header" onclick="toggleContent(this)">III. Thực hành tiết kiệm và chống lãng phí 💰</div>
+  <div class="accordion-content">
+    <ul>
+      <li>Tiết kiệm nguyên liệu, năng lượng, thời gian và nhân lực trong mọi hoạt động đơn vị.</li>
+      <li>Ngăn ngừa lãng phí trong quản lý vật tư, thực phẩm, vũ khí và trang bị kỹ thuật.</li>
+      <li>Thực hiện các biện pháp bảo vệ tài sản, nâng cao hiệu quả sử dụng và kéo dài tuổi thọ vật tư, trang bị.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="accordion-item">
+  <div class="accordion-header" onclick="toggleContent(this)">IV. An toàn giao thông và an toàn trong sinh hoạt 🚦</div>
+  <div class="accordion-content">
+    <ul>
+      <li>Thực hiện nghiêm quy tắc giao thông khi điều khiển phương tiện cơ giới trong và ngoài đơn vị.</li>
+      <li>Bảo đảm an toàn lao động trong huấn luyện, tăng gia, bảo quản trang thiết bị và sinh hoạt hằng ngày.</li>
+      <li>Tuyên truyền, giáo dục nhận thức về an toàn cho tất cả quân nhân, phòng ngừa tai nạn và rủi ro.</li>
+      <li>Đánh giá, kiểm tra định kỳ các biện pháp an toàn, khen thưởng cá nhân, tập thể thực hiện tốt.</li>
+    </ul>
+  </div>
+</div>
+
+</section>
+
+<script>
+function toggleContent(header){
+  const content = header.nextElementSibling;
+  if(content.style.display === "block"){
+    content.style.display = "none";
+  } else {
+    content.style.display = "block";
+    content.scrollIntoView({behavior:"smooth"});
+  }
+}
+</script>
+
+</body>
+</html>

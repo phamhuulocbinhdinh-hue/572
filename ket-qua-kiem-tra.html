@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kết quả bài kiểm tra</title>
+<style>
+body { font-family: Arial,sans-serif; background:#f5f5f5; padding:20px; }
+header { text-align:center; margin-bottom:20px; }
+header h1 { color:#007bff; }
+.card { background:#fff; padding:20px; border-radius:15px; margin-bottom:15px; box-shadow:0 4px 10px rgba(0,0,0,.2); }
+.correct { background:#d4edda; border-left:5px solid #28a745; padding-left:10px; }
+.wrong { background:#f8d7da; border-left:5px solid #dc3545; padding-left:10px; }
+label { display:block; margin:3px 0; }
+#score { font-size:1.3rem; color:#1e3c72; font-weight:bold; text-align:center; margin-bottom:20px; }
+button { padding:10px 18px; border:none; border-radius:12px; background:#1e3c72; color:#fff; cursor:pointer; margin:5px; display:inline-block; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Kết quả bài kiểm tra</h1>
+  <div id="userName"></div>
+  <div id="score"></div>
+</header>
+
+<section id="resultContainer">
+  <!-- Kết quả từng câu hỏi sẽ hiện ra ở đây -->
+</section>
+
+<div style="text-align:center;">
+  <button onclick="window.location.href='index.html'">⬅ Quay lại học</button>
+  <button onclick="window.location.href='bai-kiem-tra.html'">🔄 Làm lại bài</button>
+</div>
+
+<script>
+const quizData = {
+  1:"Quốc kỳ Việt Nam có màu sắc nào?",
+  2:"Học thuyết quân sự Việt Nam nhấn mạnh gì?",
+  3:"Lực lượng vũ trang Việt Nam gồm thành phần nào chính?",
+  4:"Ngày truyền thống Quân đội nhân dân Việt Nam là?",
+  5:"Chỉ huy lực lượng vũ trang tối cao là ai?",
+  6:"Vũ khí chính trong bộ binh Việt Nam hiện nay là?",
+  7:"Huấn luyện quân sự cơ bản gồm những gì?",
+  8:"Màu cờ hiệu chỉ huy quân đội là gì?",
+  9:"Lễ nghi quân đội bao gồm việc nào?",
+  10:"Nguyên tắc cơ bản trong tác chiến bộ binh?"
+};
+
+const answersText = {
+  1:{A:"Đỏ sao vàng",B:"Xanh trắng đỏ",C:"Trắng xanh",D:"Vàng đỏ xanh"},
+  2:{A:"Chiến tranh vũ trụ",B:"Chiến tranh lạnh",C:"Chiến tranh công nghệ",D:"Chiến tranh nhân dân"},
+  3:{A:"Quân đội nhân dân, Công an nhân dân, Dân quân tự vệ",B:"Hải quân, Pháo binh",C:"Không quân, Học viện",D:"Đơn vị hành chính"},
+  4:{A:"22/12",B:"19/5",C:"2/9",D:"30/4"},
+  5:{A:"Chủ tịch nước",B:"Bộ trưởng Bộ Giáo dục",C:"Thị trưởng",D:"Bộ trưởng Tài chính"},
+  6:{A:"Súng trường AK và biến thể",B:"Tên lửa đạn đạo",C:"Máy bay chiến đấu",D:"Tàu ngầm hạng nặng"},
+  7:{A:"Học ngoại ngữ",B:"Tập múa",C:"Vẽ bản đồ",D:"Vật lộn, bắn súng, chiến thuật"},
+  8:{A:"Đỏ",B:"Xanh",C:"Trắng",D:"Vàng"},
+  9:{A:"Chào, diễu hành, tập hợp",B:"Nấu ăn",C:"Học văn hóa",D:"Ngủ trưa"},
+  10:{A:"Tiến công, phòng ngự, cơ động",B:"Chỉ phòng ngự",C:"Chỉ tiến công",D:"Chỉ cơ động"}
+};
+
+const answersKey = {1:['A'],2:['D'],3:['A'],4:['A'],5:['A'],6:['A'],7:['D'],8:['A'],9:['A'],10:['A']};
+
+window.addEventListener('DOMContentLoaded', () => {
+  const resultData = JSON.parse(localStorage.getItem('quizResult'));
+  if(!resultData){
+    alert("Không tìm thấy dữ liệu bài kiểm tra. Vui lòng làm bài trước!");
+    window.location.href = 'bai-kiem-tra.html';
+    return;
+  }
+
+  document.getElementById('userName').innerText = "Học sinh: " + resultData.username;
+  document.getElementById('score').innerText = "🎉 Điểm số: " + resultData.score + " / 10";
+
+  const container = document.getElementById('resultContainer');
+
+  for(let i=1;i<=10;i++){
+    const card = document.createElement('div');
+    card.className = 'card';
+    const qTitle = document.createElement('h3');
+    qTitle.innerText = "Câu " + i + ": " + quizData[i];
+    card.appendChild(qTitle);
+
+    const userAns = resultData.answers['C'+i] || [];
+    const correctAns = answersKey[i];
+
+    for(const option in answersText[i]){
+      const lbl = document.createElement('label');
+      lbl.innerText = option + ". " + answersText[i][option];
+      if(correctAns.includes(option)){
+        lbl.classList.add('correct');
+      }
+      if(userAns.includes(option) && !correctAns.includes(option)){
+        lbl.classList.add('wrong');
+      }
+      card.appendChild(lbl);
+    }
+
+    container.appendChild(card);
+  }
+});
+</script>
+
+</body>
+</html>

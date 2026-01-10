@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Học tiếng Ê Đê</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial,sans-serif;padding:20px;}
+header{
+  background:rgba(255,255,255,.9);
+  padding:15px;
+  text-align:center;
+  border-radius:0 0 20px 20px;
+  box-shadow:0 4px 10px rgba(0,0,0,.4);
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+}
+header h1{color:#007bff;margin-bottom:10px;}
+header button{margin:3px;padding:8px 12px;border:none;border-radius:8px;cursor:pointer;background:#1e3c72;color:#fff;}
+section{max-width:900px;margin:120px auto 40px;}
+
+/* Card */
+.card-wrapper {
+  margin-bottom:20px;
+  position: relative; 
+}
+.card{
+  background:rgba(255,255,255,.65);
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 6px 15px rgba(0,0,0,.3);
+  position: relative;
+}
+.editable[contenteditable="true"]{outline:2px dashed red;background:#fff8c6;}
+
+/* Ô YouTube */
+.yt-box {
+  width:60px;
+  height:60px;
+  background:#123gff;
+  color:white;
+  border-radius:12px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:60px;
+  position:absolute;
+  top:15px;
+  right:15px;
+  cursor:pointer;
+  transition: transform 0.2s;
+  z-index:10;
+}
+.yt-box:hover {transform: scale(1.1);}
+
+/* Input trượt ra */
+.yt-input {
+  position:absolute;
+  top:15px;
+  right:15px;
+  width:0;
+  padding:5px 10px;
+  font-size:1rem;
+  border-radius:8px;
+  border:1px solid #007bff;
+  box-shadow:0 2px 6px rgba(0,0,0,0.2);
+  opacity:0;
+  transition: width 0.3s ease, opacity 0.3s ease;
+  z-index:9;
+}
+.yt-input.active {
+  width:calc(100% - 100px);
+  opacity:1;
+  right:80px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1 class="editable" data-key="title-main">Học tiếng Bana</h1>
+  <button onclick="adminLogin()">🔐 Quản trị</button>
+  <button id="editBtn" onclick="toggleEdit()" style="display:none">✏️ Chỉnh sửa</button>
+  <button id="saveBtn" onclick="saveContent()" style="display:none">💾 Lưu</button>
+  <button id="logoutBtn" onclick="logoutAdmin()" style="display:none">🚪 Thoát</button>
+</header>
+
+<section>
+  <!-- Phần 1 -->
+  <div class="card-wrapper" data-youtube="https://www.youtube.com/watch?v=idDHxFZ2_So/">
+    <div class="card">
+      <h2 class="editable" data-key="part1-title">Phần 1: Chào hỏi & Giao tiếp cơ bản</h2>
+      <p class="editable" data-key="part1-text">Mục tiêu: Học cách chào hỏi, cảm ơn, xin lỗi và hỏi thăm sức khỏe</p>
+      <p class="editable" data-key="part1-text2">Xin chào: Mơ̄nê̄</p>
+      <p class="editable" data-key="part1-text3">Khỏe không?: Pơ̄ hơ̄?</p>
+      <p class="editable" data-key="part1-text4">Cảm ơn: Pơ̄hơ̄</p>
+      <p class="editable" data-key="part1-text5">Xin lỗi: Kâhuh</p>
+      <p class="editable" data-key="part1-text6">Tạm biệt: Nôhê̄</p>
+    </div>
+    <div class="yt-box" onclick="openYT(this)">▶️</div>
+    <input type="text" class="yt-input">
+  </div>
+
+  <!-- Phần 2 -->
+  <div class="card-wrapper" data-youtube="https://www.youtube.com/watch?v=DstvJd7UTr4&t=27s/">
+    <div class="card">
+      <h2 class="editable" data-key="part2-title">Phần 2: Gia đình & Xã hội</h2>
+      <ul>
+        <li class="editable" data-key="part2-li1">Cha / bác trai: Aba</li>
+        <li class="editable" data-key="part2-li2">Mẹ / bác gái: Ami</li>
+        <li class="editable" data-key="part2-li3">Anh: Ana</li>
+        <li class="editable" data-key="part2-li4">Em: Mạ</li>
+      </ul>
+    </div>
+    <div class="yt-box" onclick="openYT(this)">▶️</div>
+    <input type="text" class="yt-input">
+  </div>
+
+  <!-- Phần 3 -->
+  <div class="card-wrapper" data-youtube="https://www.youtube.com/">
+    <div class="card">
+      <h2 class="editable" data-key="part3-title">Phần 3: Hoạt động & Lao động</h2>
+      <ul>
+        <li class="editable" data-key="part3-li1">Làm rẫy: Mơ̄n rẫy</li>
+        <li class="editable" data-key="part3-li2">Trồng lúa: Mơ̄n mja</li>
+        <li class="editable" data-key="part3-li3">Đi làm: Mơ̄n</li>
+        <li class="editable" data-key="part3-li4">Nghỉ ngơi: Ndrâm</li>
+      </ul>
+    </div>
+    <div class="yt-box" onclick="openYT(this)">▶️</div>
+    <input type="text" class="yt-input">
+  </div>
+
+  <!-- Phần 4 -->
+  <div class="card-wrapper" data-youtube="https://www.youtube.com/">
+    <div class="card">
+      <h2 class="editable" data-key="part4-title">Phần 4: Thời gian, địa điểm & Văn hóa</h2>
+      <p class="editable" data-key="part4-text">Thời gian: Hôm nay – Mơ̄n hơ̄, Ngày mai – Mơ̄n mai, Sáng – Mdrăm, Chiều – Mdrê, Tối – Mdrê tối</p>
+    </div>
+    <div class="yt-box" onclick="openYT(this)">▶️</div>
+    <input type="text" class="yt-input">
+  </div>
+</section>
+
+<div style="text-align:center; margin:30px 0;">
+  <button onclick="window.location.href='index.html'" style="background:#1e3c72;color:#fff;border:none;padding:10px 18px;border-radius:12px;cursor:pointer;font-size:0.95rem;">⬅ Quay lại</button>
+</div>
+
+<script>
+const ADMIN_PASSWORD = "303"; 
+let isAdmin = false;
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzVjaZaufYxCBN6-xmkCQcOC9VMLvJT4ZH8vHh7ZzXuRDDmXl68lCMbM9PF9bvoLr8ShQ/exec";
+
+// Click ô YouTube
+function openYT(box){
+  const wrapper = box.closest('.card-wrapper');
+  const input = wrapper.querySelector('.yt-input');
+  if(isAdmin){
+    input.classList.add('active');
+    input.value = wrapper.dataset.youtube;
+    input.focus();
+    input.onblur = ()=>{
+      wrapper.dataset.youtube = input.value;
+      input.classList.remove('active');
+    }
+  } else {
+    const link = wrapper.dataset.youtube;
+    if(link) window.open(link, '_blank');
+  }
+}
+
+// Quản trị
+function adminLogin() {
+  const pass = prompt("Nhập mật khẩu quản trị:");
+  if (pass === ADMIN_PASSWORD) {
+    isAdmin = true;
+    document.getElementById("editBtn").style.display = 
+    document.getElementById("saveBtn").style.display = 
+    document.getElementById("logoutBtn").style.display = "inline-block";
+    alert("✅ Đã vào chế độ quản trị");
+  }
+}
+
+function toggleEdit() {
+  if (!isAdmin) return;
+  document.querySelectorAll(".editable").forEach(el => {
+    el.contentEditable = el.contentEditable !== "true";
+  });
+}
+
+async function saveContent() {
+  if (!isAdmin) return;
+  const data = {};
+  document.querySelectorAll(".editable").forEach(el => {
+    data[el.dataset.key] = el.innerHTML;
+  });
+  document.querySelectorAll('.card-wrapper').forEach((wrapper, i)=>{
+    data['youtube-'+i] = wrapper.dataset.youtube;
+  });
+  try {
+    const res = await fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify(data)
+    });
+    const result = await res.json();
+    alert("💾 Đã lưu nội dung lên Google Sheet: " + result.status);
+  } catch (err) {
+    alert("❌ Lỗi lưu: " + err.message);
+  }
+}
+
+async function loadContent() {
+  try {
+    const res = await fetch(SCRIPT_URL);
+    const data = await res.json();
+    document.querySelectorAll(".editable").forEach(el => {
+      if (data[el.dataset.key]) el.innerHTML = data[el.dataset.key];
+    });
+    document.querySelectorAll('.card-wrapper').forEach((wrapper,i)=>{
+      if(data['youtube-'+i]) wrapper.dataset.youtube = data['youtube-'+i];
+    });
+  } catch (err) {
+    console.error("❌ Lỗi tải dữ liệu:", err);
+  }
+}
+
+function logoutAdmin() {
+  isAdmin = false;
+  document.querySelectorAll(".editable").forEach(el => el.contentEditable = false);
+  document.getElementById("editBtn").style.display = 
+  document.getElementById("saveBtn").style.display = 
+  document.getElementById("logoutBtn").style.display = "none";
+  document.querySelectorAll('.yt-input').forEach(input => input.classList.remove('active'));
+}
+
+window.onload = loadContent;
+</script>
+
+</body>
+</html>

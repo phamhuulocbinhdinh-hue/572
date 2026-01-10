@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 2 - Sự lãnh đạo của Đảng và Bác Hồ</title>
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family: Arial, sans-serif; padding:20px; background:#f0f8ff; color:#000;}
+header {background: rgba(255,255,255,0.85); padding:20px; text-align:center; border-radius:0 0 20px 20px; backdrop-filter: blur(5px);}
+header h1 {color:#32CD32; font-size:1.8rem;}
+section {max-width:900px; margin:30px auto;}
+button.back {background:#1e3c72; color:#fff; border:none; border-radius:10px; padding:10px 15px; cursor:pointer; margin-bottom:20px;}
+button.back:hover {background:#2a5298; transform:translateY(-2px);}
+.accordion-item {background: rgba(255,255,255,0.75); margin-bottom:10px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1);}
+.accordion-header {padding:15px 20px; cursor:pointer; font-weight:bold; color:#32CD32; display:flex; justify-content:space-between; align-items:center;}
+.accordion-header:hover {background: rgba(50,205,50,0.1);}
+.accordion-content {display:none; padding:10px 20px 15px 20px; line-height:1.6;}
+.accordion-content ul {margin-left:20px;}
+.accordion-content li {margin-bottom:6px;}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Bài 2: Đảng Cộng sản Việt Nam, Chủ tịch Hồ Chí Minh tổ chức, lãnh đạo, giáo dục và rèn luyện Quân đội nhân dân Việt Nam</h1>
+</header>
+
+<section>
+<a href="gdct-csm.html"><button class="back">⏪ Quay lại</button></a>
+
+<div class="accordion-item">
+  <div class="accordion-header" onclick="toggleContent(this)">I. Sự lãnh đạo của Đảng Cộng sản Việt Nam và Chủ tịch Hồ Chí Minh quyết định sự trưởng thành và chiến thắng của Quân đội nhân dân Việt Nam 🏅</div>
+  <div class="accordion-content">
+    <ul>
+      <li>Đảng Cộng sản Việt Nam đã xây dựng đường lối chính trị, chiến lược và kế hoạch chiến đấu cho Quân đội nhân dân Việt Nam.</li>
+      <li>Chủ tịch Hồ Chí Minh trực tiếp giáo dục, rèn luyện đạo đức, tư tưởng và tinh thần cách mạng cho quân nhân.</li>
+      <li>Nhờ sự lãnh đạo đúng đắn của Đảng và Bác Hồ, Quân đội đã trưởng thành từ lực lượng tự vệ nhỏ bé thành lực lượng chính quy, anh dũng, đóng vai trò quyết định trong các cuộc kháng chiến giành độc lập dân tộc.</li>
+      <li>Truyền thống “Trung thành, dũng cảm, kỷ luật và sáng tạo” được hình thành dưới sự dẫn dắt của Đảng và Bác Hồ.</li>
+      <li>Quân đội không chỉ chiến đấu mà còn phục vụ nhân dân, góp phần củng cố niềm tin của dân với cách mạng và xây dựng Tổ quốc.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="accordion-item">
+  <div class="accordion-header" onclick="toggleContent(this)">II. Giữ vững và tăng cường sự lãnh đạo của Đảng đối với Quân đội nhân dân Việt Nam 🪖</div>
+  <div class="accordion-content">
+    <ul>
+      <li>Duy trì nguyên tắc Đảng lãnh đạo tuyệt đối, trực tiếp về mọi mặt đối với Quân đội nhân dân Việt Nam.</li>
+      <li>Tiếp tục giáo dục tư tưởng, chính trị, đạo đức cách mạng cho từng quân nhân.</li>
+      <li>Rèn luyện kỷ luật nghiêm minh, tinh thần đoàn kết nội bộ và khả năng thực hiện nhiệm vụ trong mọi hoàn cảnh.</li>
+      <li>Đổi mới công tác chỉ huy, huấn luyện và tổ chức để Quân đội đáp ứng yêu cầu bảo vệ Tổ quốc trong thời kỳ mới.</li>
+      <li>Thực hiện kiểm tra, giám sát, đánh giá thường xuyên để củng cố niềm tin và tăng cường sức mạnh toàn diện cho Quân đội.</li>
+    </ul>
+  </div>
+</div>
+
+</section>
+
+<script>
+function toggleContent(header){
+  const content = header.nextElementSibling;
+  if(content.style.display === "block"){
+    content.style.display = "none";
+  } else {
+    content.style.display = "block";
+    content.scrollIntoView({behavior:"smooth"});
+  }
+}
+</script>
+
+</body>
+</html>

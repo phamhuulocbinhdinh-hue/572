@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 3 - Bản chất, mục tiêu và nhiệm vụ QĐND Việt Nam</title>
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family: Arial, sans-serif; padding:20px; background:#f0f8ff; color:#000;}
+header {background: rgba(255,255,255,0.85); padding:20px; text-align:center; border-radius:0 0 20px 20px; backdrop-filter: blur(5px);}
+header h1 {color:#FFA500; font-size:1.8rem;}
+section {max-width:900px; margin:30px auto;}
+button.back {background:#1e3c72; color:#fff; border:none; border-radius:10px; padding:10px 15px; cursor:pointer; margin-bottom:20px;}
+button.back:hover {background:#2a5298; transform:translateY(-2px);}
+.accordion-item {background: rgba(255,255,255,0.75); margin-bottom:10px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1);}
+.accordion-header {padding:15px 20px; cursor:pointer; font-weight:bold; color:#FFA500; display:flex; justify-content:space-between; align-items:center;}
+.accordion-header:hover {background: rgba(255,165,0,0.1);}
+.accordion-content {display:none; padding:10px 20px 15px 20px; line-height:1.6;}
+.accordion-content ul {margin-left:20px;}
+.accordion-content li {margin-bottom:6px;}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Bài 3: Bản chất, mục tiêu, lý tưởng chiến đấu, chức năng, nhiệm vụ và đối tượng tác chiến của Quân đội nhân dân Việt Nam</h1>
+</header>
+
+<section>
+<a href="gdct-csm.html"><button class="back">⏪ Quay lại</button></a>
+
+<div class="accordion-item">
+  <div class="accordion-header" onclick="toggleContent(this)">I. Bản chất giai cấp, mục tiêu, lý tưởng chiến đấu của Quân đội nhân dân Việt Nam 🏅</div>
+  <div class="accordion-content">
+    <ul>
+      <li>Bản chất: Quân đội nhân dân Việt Nam là đội quân của giai cấp công nhân, nhân dân lao động, trung thành tuyệt đối với Đảng, Nhà nước và nhân dân.</li>
+      <li>Mục tiêu: Bảo vệ vững chắc Tổ quốc Việt Nam Xã hội chủ nghĩa, bảo vệ Đảng, chế độ và nhân dân.</li>
+      <li>Lý tưởng chiến đấu: “Trung thành – Dũng cảm – Kỷ luật – Sáng tạo”, luôn đặt nhiệm vụ bảo vệ Tổ quốc lên hàng đầu, sẵn sàng chiến đấu trong mọi tình huống.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="accordion-item">
+  <div class="accordion-header" onclick="toggleContent(this)">II. Chức năng, nhiệm vụ, đối tượng tác chiến của Quân đội nhân dân Việt Nam 🛡️</div>
+  <div class="accordion-content">
+    <ul>
+      <li>Chức năng: Lực lượng chính trị – quân sự, bảo vệ an ninh, chủ quyền, toàn vẹn lãnh thổ và ổn định xã hội.</li>
+      <li>Nhiệm vụ chính: Phòng thủ quốc gia, tham gia kháng chiến, cứu hộ cứu nạn, tham gia phát triển kinh tế – xã hội và xây dựng đất nước.</li>
+      <li>Đối tượng tác chiến: Các thế lực thù địch, xâm lược, các hành vi chống phá Nhà nước và nhân dân, đảm bảo an ninh quốc gia trên mọi mặt.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="accordion-item">
+  <div class="accordion-header" onclick="toggleContent(this)">III. Giữ vững và tăng cường bản chất giai cấp, kiên định mục tiêu lý tưởng chiến đấu, thực hiện thắng lợi mọi nhiệm vụ được giao 🪖</div>
+  <div class="accordion-content">
+    <ul>
+      <li>Rèn luyện đạo đức, tư tưởng, chính trị để củng cố bản chất cách mạng, gắn kết quân đội với nhân dân.</li>
+      <li>Huấn luyện, bồi dưỡng, nâng cao trình độ chính trị, quân sự, khoa học kỹ thuật cho toàn quân.</li>
+      <li>Thực hiện nghiêm kỷ luật, tăng cường tinh thần đoàn kết, sáng tạo, nâng cao khả năng chiến đấu và hoàn thành mọi nhiệm vụ.</li>
+      <li>Tiếp tục phát huy truyền thống “Trung thành – Dũng cảm – Kỷ luật – Sáng tạo” để xây dựng Quân đội chính quy, tinh nhuệ, hiện đại, sẵn sàng chiến đấu bảo vệ Tổ quốc.</li>
+    </ul>
+  </div>
+</div>
+
+</section>
+
+<script>
+function toggleContent(header){
+  const content = header.nextElementSibling;
+  if(content.style.display === "block"){
+    content.style.display = "none";
+  } else {
+    content.style.display = "block";
+    content.scrollIntoView({behavior:"smooth"});
+  }
+}
+</script>
+
+</body>
+</html>

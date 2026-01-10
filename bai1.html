@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 1 - Truyền thống - Giáo dục CSM</title>
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family: Arial, sans-serif; padding:20px; background:#f0f8ff; color:#000;}
+header {background: rgba(255,255,255,0.85); padding:20px; text-align:center; border-radius:0 0 20px 20px; backdrop-filter: blur(5px);}
+header h1 {color:#1E90FF; font-size:1.8rem;}
+section {max-width:900px; margin:30px auto;}
+button.back {background:#1e3c72; color:#fff; border:none; border-radius:10px; padding:10px 15px; cursor:pointer; margin-bottom:20px;}
+button.back:hover {background:#2a5298; transform:translateY(-2px);}
+.accordion-item {background: rgba(255,255,255,0.75); margin-bottom:10px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1);}
+.accordion-header {padding:15px 20px; cursor:pointer; font-weight:bold; color:#1E90FF; display:flex; justify-content:space-between; align-items:center;}
+.accordion-header:hover {background: rgba(30,144,255,0.1);}
+.accordion-content {display:none; padding:10px 20px 15px 20px; line-height:1.6;}
+.accordion-content ul {margin-left:20px;}
+.accordion-content li {margin-bottom:6px;}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Bài 1: Truyền thống của dân tộc và Quân đội nhân dân Việt Nam</h1>
+</header>
+
+<section>
+<a href="gdct-csm.html"><button class="back">⏪ Quay lại</button></a>
+
+<div class="accordion-item">
+  <div class="accordion-header" onclick="toggleContent(this)">I. Truyền thống của dân tộc Việt Nam 🇻🇳</div>
+  <div class="accordion-content">
+    <ul>
+      <li>Dân tộc Việt Nam có truyền thống yêu nước, đoàn kết chống ngoại xâm từ hàng ngàn năm.</li>
+      <li>Các cuộc khởi nghĩa, chiến tranh bảo vệ Tổ quốc đều thể hiện lòng yêu nước, tinh thần quật cường và sáng tạo trong chiến đấu.</li>
+      <li>Truyền thống văn hóa: chăm chỉ lao động, tôn trọng hiền tài, tôn sư trọng đạo, đoàn kết cộng đồng và giữ gìn bản sắc dân tộc.</li>
+      <li>Học hỏi và phát triển tri thức, kết hợp truyền thống với hiện đại để xây dựng đất nước vững mạnh.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="accordion-item">
+  <div class="accordion-header" onclick="toggleContent(this)">II. Truyền thống của Quân đội nhân dân Việt Nam 🪖</div>
+  <div class="accordion-content">
+    <ul>
+      <li>Quân đội nhân dân Việt Nam được thành lập năm 1944, gắn liền với sự nghiệp cách mạng và bảo vệ Tổ quốc.</li>
+      <li>Truyền thống yêu nước, trung thành tuyệt đối với Đảng, Nhà nước và nhân dân.</li>
+      <li>Tinh thần chiến đấu anh dũng, mưu trí và sáng tạo trong mọi nhiệm vụ, từ kháng chiến đến xây dựng bảo vệ Tổ quốc.</li>
+      <li>Kỷ luật nghiêm minh, đoàn kết nội bộ, gương mẫu trong sinh hoạt, huấn luyện và thực hiện nhiệm vụ.</li>
+      <li>Luôn rèn luyện sức khỏe, đạo đức, trí tuệ, duy trì văn hóa quân nhân, tôn trọng nhân dân và bảo vệ chính nghĩa.</li>
+    </ul>
+  </div>
+</div>
+
+</section>
+
+<script>
+function toggleContent(header){
+  const content = header.nextElementSibling;
+  if(content.style.display === "block"){
+    content.style.display = "none";
+  } else {
+    content.style.display = "block";
+    content.scrollIntoView({behavior:"smooth"});
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Học tập</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial,sans-serif;padding:20px;}
+
+/* Hình nền */
+#background{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:url('background.jpg') no-repeat center center fixed;
+  background-size:cover;
+  z-index:-1;
+}
+
+/* Header */
+header{
+  background:rgba(255,255,255,.85);
+  padding:20px;text-align:center;
+  position:fixed;top:0;width:100%;z-index:1000;
+  border-radius:0 0 20px 20px;
+  box-shadow:0 4px 10px rgba(0,0,0,.4);
+}
+header h1{color:#007bff;font-size:2rem;}
+
+/* Section & Card */
+section{max-width:1000px;margin:120px auto 40px;}
+.card{
+  background:rgba(255,255,255,.7);
+  padding:30px;
+  margin:25px 0;
+  border-radius:20px;
+  box-shadow:0 6px 15px rgba(0,0,0,.3);
+}
+.card h2{margin-bottom:20px;color:#1e3c72;}
+
+/* Grid các ô vuông */
+.grid-lessons{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:20px;
+}
+
+/* Ô vuông trong suốt + blur */
+.square-lesson{
+  padding:40px 20px;
+  border-radius:20px;
+  text-align:center;
+  font-size:1.1rem;
+  font-weight:bold;
+  color:#1e3c72;
+  transition:.3s, transform .3s;
+  box-shadow:0 4px 10px rgba(0,0,0,.25);
+  background-color: rgba(255, 255, 255, 0.35); /* pastel trong suốt */
+  backdrop-filter: blur(5px);
+}
+.square-lesson a{text-decoration:none;color:inherit;display:block;}
+.square-lesson:hover{
+  transform:translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Icon */
+.icon{font-size:2.5rem;margin-bottom:10px;}
+
+/* Responsive */
+@media(max-width:600px){
+  .grid-lessons{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div id="background"></div>
+
+<header>
+  <h1>Học tập</h1>
+</header>
+
+<section>
+
+  <!-- CARD 0: Giới thiệu -->
+  <div class="card">
+    <h2>👋 Chào mừng</h2>
+    <p>Đây là trang học tập của đơn vị, mời các đồng chí tham gia học tập đầy đủ các nội dung được cung cấp. Chúc các đồng chí học tập hiệu quả và nâng cao kiến thức!</p>
+  </div>
+
+  <!-- CARD 1: Giáo dục chính trị -->
+  <div class="card">
+    <h2>📚 Giáo dục chính trị & Thông tin</h2>
+    <div class="grid-lessons">
+      <div class="square-lesson"><a href="gdct-co-ban.html">📘 Giáo dục chính trị cơ bản</a></div>
+      <div class="square-lesson"><a href="pho-bien-gdpl.html">📖 Phổ biến pháp luật</a></div>
+      <div class="square-lesson">
+  <a href="#" onclick="kiemTraMatKhau()">🧠 Nắm tư tưởng</a>
+</div>
+
+      <div class="square-lesson"><a href="thong-tin-tuyen-truyen.html">📰 Thông tin tuyên truyền</a></div>
+    </div>
+  </div>
+
+  <!-- CARD 2: Lãnh đạo & Học tập -->
+  <div class="card">
+    <h2>🗂️ Lãnh đạo & Học tập</h2>
+    <div class="grid-lessons">
+      <div class="square-lesson"><a href="bao-cao-cap-tren.html">📊 Nghị quyết lãnh đạo</a></div>
+     <div class="square-lesson">
+  <a href="https://vr360.yoolife.vn/bao-tang-lich-su-quan-su-viet-nam-zmuseumc118u26724" target="_blank">🏛️ Tham quan bảo tàng</a>
+</div>
+
+      <div class="square-lesson"><a href="binh-dan-hoc-vu.html">📝 Bình dân học vụ số</a></div>
+      <div class="square-lesson"><a href="van-ban-huong-dan.html">📄 Văn bản hướng dẫn</a></div>
+    </div>
+  </div>
+
+  <!-- CARD 3: Bài kiểm tra -->
+<div class="card">
+  <h2>📝 Bài kiểm tra</h2>
+  <div class="grid-lessons">
+    <div class="square-lesson"><a href="bai-kiem-tra.html">📋 Bài kiểm tra 1</a></div>
+    <div class="square-lesson"><a href="ket-qua-kiem-tra.html">📊 Kết quả kiểm tra</a></div>
+  </div>
+</div>
+
+
+ <!-- CARD 4: Học tiếng dân tộc -->
+<div class="card">
+  <h2>🗣️ Học tiếng dân tộc</h2>
+  <div class="grid-lessons">
+    <div class="square-lesson">
+      <a href="hoc-tieng-ede.html">📝 Học tiếng Ê Đê</a>
+    </div>
+    <div class="square-lesson">
+      <a href="hoc-tieng-giarai.html">📝 Học tiếng Gia Rai</a>
+    </div>
+    <div class="square-lesson">
+      <a href="hoc-tieng-bana.html">📝 Học tiếng Ba Na</a>
+    </div>
+    
+  </div>
+</div>
+
+
+</section>
+<script>
+  function kiemTraMatKhau() {
+    const matKhauDung = "123456"; // ← đổi mật khẩu tại đây
+    const nhap = prompt("🔐 Vui lòng nhập mật khẩu:");
+
+    if (nhap === matKhauDung) {
+      window.location.href = "nam-quan-ly-tu-tuong.html";
+    } else {
+      alert("❌ Mật khẩu không đúng!");
+    }
+  }
+</script>
+
+</body>
+</html>

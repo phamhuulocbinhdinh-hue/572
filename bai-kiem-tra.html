@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài kiểm tra - Học tiếng Ê Đê</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family: Arial,sans-serif;}
+body { padding:20px; background:#f5f5f5; }
+header {
+  background:rgba(255,255,255,.9);
+  padding:15px;
+  text-align:center;
+  border-radius:0 0 20px 20px;
+  box-shadow:0 4px 10px rgba(0,0,0,.4);
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+}
+header h1{ color:#007bff; margin-bottom:10px; }
+header button{ margin:3px; padding:8px 12px; border:none; border-radius:8px; cursor:pointer; background:#1e3c72; color:#fff; }
+section{ max-width:900px; margin:120px auto 40px; }
+
+.card { 
+  background: #fff; 
+  padding: 25px; 
+  border-radius: 20px; 
+  box-shadow:0 6px 15px rgba(0,0,0,.3); 
+  margin-bottom: 20px; 
+  position: relative;
+}
+.editable[contenteditable="true"] { outline:2px dashed red; background:#fff8c6; }
+
+.answers label { display:block; padding:8px 12px; border:1px solid #ccc; border-radius:8px; margin-bottom:6px; cursor:pointer; transition:0.2s; }
+.answers input[type="checkbox"] { margin-right:10px; }
+.answers label:hover { background:#e0f0ff; }
+
+.correct { background:#d4edda !important; border-color:#28a745 !important; }
+.wrong { background:#f8d7da !important; border-color:#dc3545 !important; }
+
+#result { font-weight:bold; margin-top:15px; color:#1e3c72; font-size:1.2rem; text-align:center; }
+
+#loginBox { text-align:center; margin-bottom:20px; }
+#loginBox input { padding:8px 12px; border-radius:8px; border:1px solid #007bff; margin-right:6px; }
+#loginBox button { padding:8px 12px; border:none; border-radius:8px; background:#007bff; color:#fff; cursor:pointer; }
+
+.backBtn { display:block; margin:20px auto; padding:10px 18px; border:none; border-radius:12px; background:#1e3c72; color:#fff; cursor:pointer; text-align:center; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1 class="editable" data-key="title">Bài kiểm tra kiến thức quân sự</h1>
+  <button onclick="adminLogin()">🔐 Quản trị</button>
+  <button id="editBtn" onclick="toggleEdit()" style="display:none">✏️ Chỉnh sửa</button>
+  <button id="saveBtn" onclick="saveContent()" style="display:none">💾 Lưu</button>
+  <button id="logoutBtn" onclick="logoutAdmin()" style="display:none">🚪 Thoát</button>
+</header>
+
+<section>
+
+  <div id="loginBox">
+    <input type="text" id="username" placeholder="Tên đăng nhập" />
+    <button onclick="startQuiz()">📝 Bắt đầu làm bài</button>
+  </div>
+
+  <div id="quizContainer" style="display:none;">
+
+    <!-- Câu hỏi 1 -->
+    <div class="card question-wrapper" data-question-id="1">
+      <h2 class="editable" data-key="q1">Câu 1: Quốc kỳ Việt Nam có màu sắc nào?</h2>
+      <div class="answers">
+        <label><input type="checkbox" value="A"> Đỏ sao vàng</label>
+        <label><input type="checkbox" value="B"> Xanh trắng đỏ</label>
+        <label><input type="checkbox" value="C"> Trắng xanh</label>
+        <label><input type="checkbox" value="D"> Vàng đỏ xanh</label>
+      </div>
+    </div>
+
+    <!-- Câu hỏi 2 -->
+    <div class="card question-wrapper" data-question-id="2">
+      <h2 class="editable" data-key="q2">Câu 2: Học thuyết quân sự Việt Nam nhấn mạnh gì?</h2>
+      <div class="answers">
+        <label><input type="checkbox" value="A"> Chiến tranh vũ trụ</label>
+        <label><input type="checkbox" value="B"> Chiến tranh lạnh</label>
+        <label><input type="checkbox" value="C"> Chiến tranh công nghệ</label>
+        <label><input type="checkbox" value="D"> Chiến tranh nhân dân</label>
+      </div>
+    </div>
+
+    <!-- Câu hỏi 3 -->
+    <div class="card question-wrapper" data-question-id="3">
+      <h2 class="editable" data-key="q3">Câu 3: Lực lượng vũ trang Việt Nam gồm thành phần nào chính?</h2>
+      <div class="answers">
+        <label><input type="checkbox" value="A"> Quân đội nhân dân, Công an nhân dân, Dân quân tự vệ</label>
+        <label><input type="checkbox" value="B"> Hải quân, Pháo binh</label>
+        <label><input type="checkbox" value="C"> Không quân, Học viện</label>
+        <label><input type="checkbox" value="D"> Đơn vị hành chính</label>
+      </div>
+    </div>
+
+    <!-- Câu hỏi 4 -->
+    <div class="card question-wrapper" data-question-id="4">
+      <h2 class="editable" data-key="q4">Câu 4: Ngày truyền thống Quân đội nhân dân Việt Nam là?</h2>
+      <div class="answers">
+        <label><input type="checkbox" value="A"> 22/12</label>
+        <label><input type="checkbox" value="B"> 19/5</label>
+        <label><input type="checkbox" value="C"> 2/9</label>
+        <label><input type="checkbox" value="D"> 30/4</label>
+      </div>
+    </div>
+
+    <!-- Câu hỏi 5 -->
+    <div class="card question-wrapper" data-question-id="5">
+      <h2 class="editable" data-key="q5">Câu 5: Chỉ huy lực lượng vũ trang tối cao là ai?</h2>
+      <div class="answers">
+        <label><input type="checkbox" value="A"> Chủ tịch nước</label>
+        <label><input type="checkbox" value="B"> Bộ trưởng Bộ Giáo dục</label>
+        <label><input type="checkbox" value="C"> Thị trưởng</label>
+        <label><input type="checkbox" value="D"> Bộ trưởng Tài chính</label>
+      </div>
+    </div>
+
+    <!-- Câu hỏi 6 -->
+    <div class="card question-wrapper" data-question-id="6">
+      <h2 class="editable" data-key="q6">Câu 6: Vũ khí chính trong bộ binh Việt Nam hiện nay là?</h2>
+      <div class="answers">
+        <label><input type="checkbox" value="A"> Súng trường AK và biến thể</label>
+        <label><input type="checkbox" value="B"> Tên lửa đạn đạo</label>
+        <label><input type="checkbox" value="C"> Máy bay chiến đấu</label>
+        <label><input type="checkbox" value="D"> Tàu ngầm hạng nặng</label>
+      </div>
+    </div>
+
+    <!-- Câu hỏi 7 -->
+    <div class="card question-wrapper" data-question-id="7">
+      <h2 class="editable" data-key="q7">Câu 7: Huấn luyện quân sự cơ bản gồm những gì?</h2>
+      <div class="answers">
+        <label><input type="checkbox" value="A"> Học ngoại ngữ</label>
+        <label><input type="checkbox" value="B"> Tập múa</label>
+        <label><input type="checkbox" value="C"> Vẽ bản đồ</label>
+        <label><input type="checkbox" value="D"> Vật lộn, bắn súng, chiến thuật</label>
+      </div>
+    </div>
+
+    <!-- Câu hỏi 8 -->
+    <div class="card question-wrapper" data-question-id="8">
+      <h2 class="editable" data-key="q8">Câu 8: Màu cờ hiệu chỉ huy quân đội là gì?</h2>
+      <div class="answers">
+        <label><input type="checkbox" value="A"> Đỏ</label>
+        <label><input type="checkbox" value="B"> Xanh</label>
+        <label><input type="checkbox" value="C"> Trắng</label>
+        <label><input type="checkbox" value="D"> Vàng</label>
+      </div>
+    </div>
+
+    <!-- Câu hỏi 9 -->
+    <div class="card question-wrapper" data-question-id="9">
+      <h2 class="editable" data-key="q9">Câu 9: Lễ nghi quân đội bao gồm việc nào?</h2>
+      <div class="answers">
+        <label><input type="checkbox" value="A"> Chào, diễu hành, tập hợp</label>
+        <label><input type="checkbox" value="B"> Nấu ăn</label>
+        <label><input type="checkbox" value="C"> Học văn hóa</label>
+        <label><input type="checkbox" value="D"> Ngủ trưa</label>
+      </div>
+    </div>
+
+    <!-- Câu hỏi 10 -->
+    <div class="card question-wrapper" data-question-id="10">
+      <h2 class="editable" data-key="q10">Câu 10: Nguyên tắc cơ bản trong tác chiến bộ binh?</h2>
+      <div class="answers">
+        <label><input type="checkbox" value="A"> Tiến công, phòng ngự, cơ động</label>
+        <label><input type="checkbox" value="B"> Chỉ phòng ngự</label>
+        <label><input type="checkbox" value="C"> Chỉ tiến công</label>
+        <label><input type="checkbox" value="D"> Chỉ cơ động</label>
+      </div>
+    </div>
+
+
+    <div style="text-align:center; margin-top:20px;">
+      <button onclick="submitQuiz()" style="padding:10px 18px; border:none; border-radius:12px; background:#1e3c72; color:#fff; cursor:pointer;">✅ Nộp bài</button>
+      <div id="result"></div>
+    </div>
+
+    <!-- Nút quay lại -->
+    <button class="backBtn" onclick="window.location.href='index.html'">⬅ Quay lại</button>
+
+  </div>
+</section>
+
+<script>
+const ADMIN_PASSWORD = "303"; 
+let isAdmin = false;
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyBvZ2MBo90DldlhBrVxeD7hDE6Vsss7KEBP1rst7pqf-ZZ17WvBR63NktD8aA9C5jB/exec"; 
+
+function startQuiz() {
+  const user = document.getElementById("username").value.trim();
+  if(!user){ alert("Xin nhập tên đăng nhập."); return; }
+  document.getElementById("loginBox").style.display = "none";
+  document.getElementById("quizContainer").style.display = "block";
+}
+
+// Đáp án đúng
+const answersKey = {1:['A'],2:['D'],3:['A'],4:['A'],5:['A'],6:['A'],7:['D'],8:['A'],9:['A'],10:['A']};
+
+async function submitQuiz() {
+  let score = 0;
+  const user = document.getElementById("username").value.trim();
+  const dataToSend = { username: user };
+  const userAnswers = {};
+
+  document.querySelectorAll('.question-wrapper').forEach(q => {
+    const qid = q.dataset.questionId;
+    const checked = Array.from(q.querySelectorAll('input[type="checkbox"]')).filter(i=>i.checked).map(i=>i.value);
+    const correct = answersKey[qid];
+
+    q.querySelectorAll('label').forEach(lbl => {
+      const val = lbl.querySelector('input').value;
+      lbl.classList.remove('correct','wrong');
+      if(correct.includes(val)) lbl.classList.add('correct');
+      if(checked.includes(val) && !correct.includes(val)) lbl.classList.add('wrong');
+    });
+
+    const isCorrect = JSON.stringify(checked.sort())===JSON.stringify(correct.sort());
+    score += isCorrect ? 1 : 0;
+    dataToSend['C'+qid] = isCorrect ? 1 : 0;
+    userAnswers['C'+qid] = checked; // lưu lựa chọn người dùng
+  });
+
+  // Lưu kết quả vào localStorage để trang kết quả lấy
+  localStorage.setItem('quizResult', JSON.stringify({
+    username: user,
+    score: score,
+    answers: userAnswers
+  }));
+
+  // Chuyển sang trang ket-qua-kiem-tra.html
+  window.location.href = 'ket-qua-kiem-tra.html';
+
+  // Gửi dữ liệu lên Google Sheet
+  try {
+    const res = await fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify(dataToSend)
+    });
+    const result = await res.json();
+    console.log("Kết quả lưu Sheet:", result.status);
+  } catch(err) {
+    console.error("Lỗi lưu Sheet:", err);
+  }
+}
+
+// Quản trị
+function adminLogin() {
+  const pass = prompt("Nhập mật khẩu quản trị:");
+  if (pass===ADMIN_PASSWORD) {
+    isAdmin=true;
+    document.getElementById("editBtn").style.display =
+    document.getElementById("saveBtn").style.display =
+    document.getElementById("logoutBtn").style.display="inline-block";
+    alert("📌 Chế độ quản trị kích hoạt");
+  }
+}
+function toggleEdit() {
+  if(!isAdmin) return;
+  document.querySelectorAll(".editable").forEach(el => el.contentEditable = el.contentEditable!=="true");
+}
+async function saveContent() {
+  if(!isAdmin) return;
+  const data={};
+  document.querySelectorAll(".editable").forEach(el=> data[el.dataset.key]=el.innerHTML);
+  try {
+    const res = await fetch(SCRIPT_URL,{method:"POST",body:JSON.stringify(data)});
+    const result = await res.json();
+    alert("💾 Đã lưu: "+result.status);
+  } catch(err){ alert("❌ Lỗi lưu: "+err.message); }
+}
+function logoutAdmin() {
+  isAdmin=false;
+  document.querySelectorAll(".editable").forEach(el=>el.contentEditable=false);
+  document.getElementById("editBtn").style.display =
+  document.getElementById("saveBtn").style.display =
+  document.getElementById("logoutBtn").style.display="none";
+}
+</script>
+
+</body>
+</html>

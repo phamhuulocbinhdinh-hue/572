@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theo dõi tư tưởng quân nhân</title>
+<style>
+:root{
+  --primary:#007bff;
+  --secondary:#1e3c72;
+  --bg:#f0f8ff;
+  --danger:#dc3545;
+  --warning:#ffc107;
+  --success:#28a745;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',sans-serif;padding:20px;background:var(--bg);}
+header{
+  background:rgba(255,255,255,.9);
+  padding:20px;
+  padding-bottom:35px;
+  text-align:center;
+  border-radius:0 0 20px 20px;
+  position:relative;
+}
+header h1{color:var(--primary);margin-bottom:8px;}
+button{
+  background:var(--secondary);color:#fff;border:none;border-radius:10px;padding:7px 12px;margin:3px;cursor:pointer;transition:.3s;
+}
+button:hover{background:#2a5298;}
+section{max-width:1100px;margin:30px auto;}
+#content{background:rgba(255,255,255,.8);padding:20px;border-radius:15px;min-height:300px;}
+table{width:100%;border-collapse:collapse;margin-top:10px;}
+th,td{border:1px solid #ccc;padding:8px;text-align:left;}
+th{background:#eaf2ff;}
+@media(max-width:700px){table,thead,tbody,th,td,tr{display:block;}th{background:#007bff;color:#fff;}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header>
+  <h1>THEO DÕI TƯ TƯỞNG</h1>
+  <button onclick="window.location.href='nam-quan-ly-tu-tuong.html'">⬅ Quay lại</button>
+</header>
+
+<section>
+<div id="content">
+  <h2>Chọn quân nhân để xem theo dõi tư tưởng</h2>
+  <select id="chonNhanVien"><option value="">--Chọn quân nhân--</option></select>
+  <button onclick="xemTheoDoi()">Xem</button>
+  <div id="thongTin"></div>
+</div>
+</section>
+
+<script>
+// ==================== Load danh sách quân nhân ====================
+function loadNhanVien(){
+  const ds = JSON.parse(localStorage.getItem("hosoQN"))||[];
+  const select = document.getElementById("chonNhanVien");
+  select.innerHTML = '<option value="">--Chọn quân nhân--</option>';
+  ds.forEach((h,i)=>{
+    select.innerHTML += `<option value="${i}">${h.hoten} (${h.capbac})</option>`;
+  });
+}
+loadNhanVien();
+
+// ==================== Xem theo dõi tư tưởng ====================
+function xemTheoDoi(){
+  const idx = document.getElementById("chonNhanVien").value;
+  if(idx===""){ alert("Vui lòng chọn quân nhân!"); return; }
+
+  const ds = JSON.parse(localStorage.getItem("hosoQN"))||[];
+  const qn = ds[idx];
+  qn.lichSuTuTuong = qn.lichSuTuTuong || [];
+
+  let html = `<h2>${qn.hoten} (${qn.capbac}, ${qn.donvi})</h2>`;
+
+  if(qn.lichSuTuTuong.length===0){
+    html += "<p>Chưa có dữ liệu tư tưởng.</p>";
+    document.getElementById("thongTin").innerHTML = html;
+    return;
+  }
+
+  // Tính chiều hướng gần nhất
+  const lichSu = qn.lichSuTuTuong;
+  let chieuHuong = "Chưa đủ dữ liệu";
+  if(lichSu.length>=2){
+    const d0 = lichSu[lichSu.length-2].diem;
+    const d1 = lichSu[lichSu.length-1].diem;
+    if(d1>d0) chieuHuong="Tăng";
+    else if(d1<d0) chieuHuong="Giảm";
+    else chieuHuong="Ổn định";
+  }
+
+  // Cảnh báo sớm: 3 ngày liên tiếp giảm
+  let canhBaoSom=false;
+  if(lichSu.length>=3){
+    const last3 = lichSu.slice(-3);
+    if(last3[0].diem>last3[1].diem && last3[1].diem>last3[2].diem) canhBaoSom=true;
+  }
+
+  html += `<p>Chiều hướng gần nhất: <b>${chieuHuong}</b></p>`;
+  html += canhBaoSom? `<p style="color:${'red'};font-weight:bold;">⚠ Cảnh báo sớm: xu hướng xấu 3 ngày liên tiếp</p>` : "";
+
+  // Biểu đồ dao động
+  html += `<canvas id="chartLine" style="max-width:100%;height:300px;"></canvas>`;
+
+  // Lịch sử điểm
+  html += `<h3>Lịch sử tư tưởng</h3>`;
+  html += `<table><tr><th>Ngày</th><th>Điểm</th></tr>`;
+  lichSu.forEach(l => {
+    html += `<tr><td>${l.ngay}</td><td>${l.diem}</td></tr>`;
+  });
+  html += `</table>`;
+
+  document.getElementById("thongTin").innerHTML = html;
+
+  // Vẽ biểu đồ dao động
+  const ctx = document.getElementById('chartLine').getContext('2d');
+  const labels = lichSu.map(l=>l.ngay);
+  const data = lichSu.map(l=>l.diem);
+  new Chart(ctx,{
+    type:'line',
+    data:{
+      labels: labels,
+      datasets:[{
+        label:'Điểm tư tưởng',
+        data: data,
+        borderColor:'#007bff',
+        backgroundColor:'rgba(0,123,255,0.2)',
+        tension:0.4, // đường cong mượt
+        fill:true,
+        pointRadius:5
+      }]
+    },
+    options:{
+      responsive:true,
+      plugins:{legend:{display:false}},
+      scales:{
+        y:{beginAtZero:true,min:0,max:15}
+      }
+    }
+  });
+}
+</script>
+
+</body>
+</html>

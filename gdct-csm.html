@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GD CSM </title>
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family: Arial, sans-serif; padding:20px; background:#f0f8ff;}
+header {background: rgba(255,255,255,0.8); padding:20px; text-align:center; border-radius:0 0 20px 20px; backdrop-filter: blur(5px);}
+header h1 {color:#007BFF; font-size:1.7rem;}
+section {max-width:600px; margin:30px auto;}
+.grid-lessons {display:grid; grid-template-columns: 1fr; gap:15px;}
+.lesson-box {background: rgba(255,255,255,0.6); backdrop-filter: blur(10px); border-radius:15px; padding:15px; display:flex; align-items:center; justify-content: space-between; cursor:pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; font-size:1rem;}
+.lesson-box:hover {transform: translateY(-3px); box-shadow:0 5px 12px rgba(0,0,0,0.3);}
+.lesson-left {display:flex; align-items:center;}
+.lesson-number {font-size:1.2rem; font-weight:bold; margin-right:10px; width:25px; text-align:center;}
+.icon {font-size:2.5rem; margin-right:15px;}
+p {margin:0; font-weight:bold;}
+input[type="checkbox"] {transform: scale(1.3);}
+button {background:#1e3c72; color:#fff; border:none; border-radius:10px; padding:10px 15px; cursor:pointer; margin-bottom:15px;}
+button:hover {background:#2a5298; transform:translateY(-2px);}
+@media(max-width:500px){.icon{font-size:2rem;} .lesson-number{font-size:1rem;}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Giáo dục CSM </h1>
+</header>
+
+<section>
+<a href="gdct-co-ban.html"><button>⏪ Quay lại</button></a>
+
+<div class="grid-lessons">
+  <div class="lesson-box" onclick="window.open('bai1.html','_blank')">
+    <div class="lesson-left">
+      <div class="lesson-number">1</div>
+      <div class="icon" style="color:#1E90FF;">📘</div>
+      <p>Bài 1: Truyền thống dân tộc, Quân đội nhân dân Việt Nam</p>
+    </div>
+    <input type="checkbox" title="Đã học">
+  </div>
+
+  <div class="lesson-box" onclick="window.open('bai2.html','_blank')">
+    <div class="lesson-left">
+      <div class="lesson-number">2</div>
+      <div class="icon" style="color:#32CD32;">📘</div>
+      <p>Bài 2: Đảng Cộng sản Việt Nam, chủ tịch Hồ Chí Minh tổ chức, lãnh đạo, giáo dục và rèn luyện Quân đội NDVN</p>
+    </div>
+    <input type="checkbox" title="Đã học">
+  </div>
+
+  <div class="lesson-box" onclick="window.open('bai3.html','_blank')">
+    <div class="lesson-left">
+      <div class="lesson-number">3</div>
+      <div class="icon" style="color:#FFA500;">📘</div>
+      <p>Bài 3: Bản chất, mục tiêu, lý tưởng chiến đấu, chức năng, nhiệm vụ và đối tượng tác chiến của Quân đội nhân dân Việt Nam hiện nay</p>
+    </div>
+    <input type="checkbox" title="Đã học">
+  </div>
+
+  <div class="lesson-box" onclick="window.open('bai4.html','_blank')">
+    <div class="lesson-left">
+      <div class="lesson-number">4</div>
+      <div class="icon" style="color:#DC143C;">📘</div>
+      <p>Bài 4: Giữ vững và tăng cường đoàn kết nội bộ, đoàn kết quân dân, đoàn kết quốc tế của Quân đội nhân dân Việt Nam</p>
+    </div>
+    <input type="checkbox" title="Đã học">
+  </div>
+
+  <div class="lesson-box" onclick="window.open('bai5.html','_blank')">
+    <div class="lesson-left">
+      <div class="lesson-number">5</div>
+      <div class="icon" style="color:#8A2BE2;">📘</div>
+      <p>Bài 5: Dân chủ và kỷ luật trong Quân đội nhân dân Việt Nam</p>
+    </div>
+    <input type="checkbox" title="Đã học">
+  </div>
+
+  <div class="lesson-box" onclick="window.open('bai6.html','_blank')">
+    <div class="lesson-left">
+      <div class="lesson-number">6</div>
+      <div class="icon" style="color:#FF1493;">📘</div>
+      <p>Bài 6: Tăng gia sản xuất, thực hành tiết kiệm, chống lãng phí; quản lý, khai thác vũ khí, trang bị kỹ thuật tốt, bền, an toàn, tiết kiệm và an toàn giao thông</p>
+    </div>
+    <input type="checkbox" title="Đã học">
+  </div>
+</div>
+
+</section>
+
+</body>
+</html>

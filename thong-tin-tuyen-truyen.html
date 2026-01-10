@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thông tin</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial,sans-serif;padding:20px;}
+header{
+  background:rgba(255,255,255,.9);
+  padding:15px;
+  text-align:center;
+  border-radius:0 0 20px 20px;
+  box-shadow:0 4px 10px rgba(0,0,0,.4);
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+}
+header h1{color:#007bff;margin-bottom:10px;}
+header button{margin:3px;padding:8px 12px;border:none;border-radius:8px;cursor:pointer;background:#1e3c72;color:#fff;}
+section{max-width:900px;margin:120px auto 40px;}
+.card{background:rgba(255,255,255,.65);padding:25px;margin:20px 0;border-radius:20px;box-shadow:0 6px 15px rgba(0,0,0,.3);}
+.editable[contenteditable="true"]{outline:2px dashed red;background:#fff8c6;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1 class="editable" data-key="title-main">Lữ đoàn Pháo binh 572 – Truyền thống vẻ vang, chiến công nối tiếp</h1>
+  <button onclick="adminLogin()">🔐 Quản trị</button>
+  <button id="editBtn" onclick="toggleEdit()" style="display:none">✏️ Chỉnh sửa</button>
+  <button id="saveBtn" onclick="saveContent()" style="display:none">💾 Lưu</button>
+  <button id="logoutBtn" onclick="logoutAdmin()" style="display:none">🚪 Thoát</button>
+</header>
+
+<section>
+  <div class="card">
+    <h2 class="editable" data-key="part1-title">I. Lịch sử hình thành và phát triển</h2>
+    <p class="editable" data-key="part1-text">Lữ đoàn Pháo binh 572 được thành lập ngày 26/5/1972 với tên gọi ban đầu là Cụm 572 hỗn hợp pháo binh, xe tăng, cao xạ và công binh tại Trạm 10 Tí Sé, huyện Hiệp Đức (nay là Nông Sơn, tỉnh Quảng Nam).</p>
+    <p class="editable" data-key="part1-text2">Đầu năm 1973, từ Cụm 572 hình thành Trung đoàn Pháo binh 572 và sau nhiều năm trưởng thành, năm 1991 được nâng cấp thành Lữ đoàn Pháo binh 572.</p>
+  </div>
+  <div class="card">
+    <h2 class="editable" data-key="part2-title">II. Truyền thống và thành tích nổi bật</h2>
+    <ul>
+      <li class="editable" data-key="part2-li1">Qua hơn nửa thế kỷ, từ chiến tranh chống Mỹ, bảo vệ biên giới Tây Nam đến thời bình, cán bộ, chiến sĩ Lữ đoàn đã phát huy truyền thống “Chân đồng, vai sắt — đánh giỏi, bắn trúng” của pháo binh Việt Nam, hoàn thành xuất sắc mọi nhiệm vụ được giao.</li>
+      <li class="editable" data-key="part2-li2">Năm 2022, Lữ đoàn Pháo binh 572 long trọng tổ chức lễ kỷ niệm 50 năm ngày truyền thống và đón nhận Huân chương Bảo vệ Tổ quốc hạng Nhì vì những thành tích xuất sắc trong huấn luyện, sẵn sàng chiến đấu và xây dựng đơn vị.</li>
+      <li class="editable" data-key="part2-li3">Tham gia hiệu quả các hoạt động dân vận, giúp nhân dân khắc phục hậu quả thiên tai và xây dựng nông thôn mới.</li>
+      <li class="editable" data-key="part2-li4">Ghi dấu ấn trong lịch sử với nhiều chiến công xuất sắc và truyền thống anh hùng.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2 class="editable" data-key="part3-title">III. Nhiệm vụ và chức năng</h2>
+    <ul>
+      <li class="editable" data-key="part3-li1">Nhiệm vụ chính: Huấn luyện, sẵn sàng chiến đấu; bảo vệ địa bàn chiến lược miền Trung – Tây Nguyên.</li>
+      <li class="editable" data-key="part3-li2">Phòng chống thiên tai: Tham gia cứu hộ, cứu nạn và hỗ trợ nhân dân khi xảy ra lũ lụt, hạn hán hoặc cháy rừng.</li>
+      <li class="editable" data-key="part3-li3">Chức năng: Là lực lượng cơ động, sẵn sàng thực hiện nhiệm vụ đột xuất khi có lệnh từ Bộ Quốc phòng.</li>
+      <li class="editable" data-key="part3-li4">Lãnh đạo lữ đoàn: Chỉ huy lữ đoàn luôn giữ vững nguyên tắc kỷ luật, phát huy tinh thần đoàn kết, sáng tạo trong mọi nhiệm vụ.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2 class="editable" data-key="part4-title">IV. Hoạt động đơn vị</h2>
+    <p class="editable" data-key="part4-text">Thực hiện nghiêm điều lệnh, điều lệ Quân đội Nhân dân Việt Nam; rèn luyện tinh thần chiến sĩ, tính kỷ luật và lòng dũng cảm trong mọi tình huống.</p>
+  </div>
+</section>
+
+
+<div style="text-align:center; margin:30px 0;">
+  <button onclick="window.location.href='index.html'" style="background:#1e3c72;color:#fff;border:none;padding:10px 18px;border-radius:12px;cursor:pointer;font-size:0.95rem;">⬅ Quay lại</button>
+</div>
+
+<script>
+const ADMIN_PASSWORD = "303"; 
+let isAdmin = false;
+
+// Đặt URL Apps Script của bạn
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwm3_alEzmdV8lk7-49pJ_9ejwNCq6yW03Ynqt7CJU8UAE8yAb8zvB6TBZcnoorVD-2Rg/exec";
+
+const editBtn = document.getElementById("editBtn");
+const saveBtn = document.getElementById("saveBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+
+// Đăng nhập quản trị
+function adminLogin() {
+  const pass = prompt("Nhập mật khẩu quản trị:");
+  if (pass === ADMIN_PASSWORD) {
+    isAdmin = true;
+    editBtn.style.display = saveBtn.style.display = logoutBtn.style.display = "inline-block";
+    alert("✅ Đã vào chế độ quản trị");
+  }
+}
+
+// Bật/tắt chế độ chỉnh sửa
+function toggleEdit() {
+  if (!isAdmin) return;
+  document.querySelectorAll(".editable").forEach(el => {
+    el.contentEditable = el.contentEditable !== "true";
+  });
+}
+
+// Lưu nội dung lên Sheet
+async function saveContent() {
+  if (!isAdmin) return;
+  const data = {};
+  document.querySelectorAll(".editable").forEach(el => {
+    data[el.dataset.key] = el.innerHTML;
+  });
+  try {
+    const res = await fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify(data)
+    });
+    const result = await res.json();
+    alert("💾 Đã lưu nội dung lên Google Sheet: " + result.status);
+  } catch (err) {
+    alert("❌ Lỗi lưu: " + err.message);
+  }
+}
+
+// Tải dữ liệu từ Sheet
+async function loadContent() {
+  try {
+    const res = await fetch(SCRIPT_URL);
+    const data = await res.json();
+    document.querySelectorAll(".editable").forEach(el => {
+      if (data[el.dataset.key]) el.innerHTML = data[el.dataset.key];
+    });
+  } catch (err) {
+    console.error("❌ Lỗi tải dữ liệu:", err);
+  }
+}
+
+// Đăng xuất quản trị
+function logoutAdmin() {
+  isAdmin = false;
+  document.querySelectorAll(".editable").forEach(el => el.contentEditable = false);
+  editBtn.style.display = saveBtn.style.display = logoutBtn.style.display = "none";
+}
+
+// Khi mở trang, tải dữ liệu
+window.onload = loadContent;
+</script>
+
+</body>
+</html>

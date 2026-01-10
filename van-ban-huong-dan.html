@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Văn bản hướng dẫn </title>
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family: Arial, sans-serif; padding:20px; background:#f0f8ff;}
+header {background: rgba(255,255,255,0.8); padding:20px; text-align:center; border-radius:0 0 20px 20px; backdrop-filter: blur(5px);}
+header h1 {color:#007BFF; font-size:1.7rem;}
+section {max-width:900px; margin:30px auto;}
+.grid-lessons{display:grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom:20px;}
+.square-lesson{background: rgba(255,255,255,0.6); backdrop-filter: blur(10px); border-radius: 15px; text-align: center; padding: 30px 10px; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.square-lesson:hover{transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.3);}
+.square-lesson .icon{font-size:2.5rem; margin-bottom: 10px;}
+.square-lesson p{font-weight: bold; margin-top:5px;}
+#lesson-content{background: rgba(255,255,255,0.6); padding:20px; border-radius:12px; min-height:100px; box-shadow:0 4px 10px rgba(0,0,0,0.2);}
+button {background:#1e3c72; color:#fff; border:none; border-radius:10px; padding:8px 12px; cursor:pointer; margin-top:10px; font-size:0.9em; transition:0.3s;}
+button:hover {background:#2a5298; transform:translateY(-2px);}
+@media(max-width:800px){.grid-lessons{grid-template-columns: 1fr;}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Văn bản hướng dẫn </h1>
+</header>
+
+<section>
+<!-- Nút quay lại -->
+<a href="index.html"><button>⏪ Quay lại</button></a>
+
+<!-- Các ô vuông -->
+<div class="grid-lessons">
+  <div class="square-lesson" onclick="showText()">
+    <div class="icon">📄</div>
+    <p>Văn bản hướng dẫn</p>
+  </div>
+  <div class="square-lesson" onclick="window.open('https://thuvienphapluat.vn/van-ban/Trach-nhiem-hinh-su/Luat-sua-doi-Bo-luat-To-tung-hinh-su-2025-so-99-2025-QH15-662829.aspx','_blank')">
+    <div class="icon">🔗</div>
+    <p>Đường link tham khảo</p>
+  </div>
+</div>
+
+<!-- Nội dung hiển thị -->
+<div id="lesson-content">
+<p>Chọn một ô để xem nội dung...</p>
+</div>
+
+<script>
+function showText() {
+  document.getElementById('lesson-content').innerHTML = `
+    <h3>Quy chế 775</h3>
+    <p>Quy chế 775 là văn bản hướng dẫn các quy định và quy trình công tác nội bộ của đơn vị, áp dụng cho toàn quân nhân.</p>
+    <button onclick="showPDF()">Hiển thị hình ảnh / PDF</button>
+  `;
+}
+
+function showPDF() {
+  document.getElementById('lesson-content').innerHTML += `
+    <h4>Hình ảnh / PDF hướng dẫn:</h4>
+    <p><a href="huongdan.pdf" target="_blank">Mở file PDF</a></p>
+  `;
+}
+</script>
+
+</body>
+</html>
